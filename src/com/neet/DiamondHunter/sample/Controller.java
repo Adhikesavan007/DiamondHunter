@@ -1,5 +1,6 @@
 package com.neet.DiamondHunter.sample;
 
+import com.neet.DiamondHunter.MapViewer.World1;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,6 +27,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements  Initializable  {
+    World1 wr=new World1();
 
    @FXML
    Button btn ,btn2;
@@ -36,10 +38,11 @@ public class Controller implements  Initializable  {
    @FXML
     ImageView bt ;
    @FXML
-    StackPane stp;
+    StackPane stp , stp2;
 
-   boolean bt_movable=false;
+   boolean bt_moveable=false , ax_moveable=false;
    int bt_count=0;
+   int ax_count=0;
 
    @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
@@ -54,18 +57,40 @@ public class Controller implements  Initializable  {
     public void jp() {
 
       anc.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
           @Override
           public void handle(MouseEvent event) {
               final double x = event.getX();
               final double y = event.getY();
               label.setText("X = " + (Math.round(x)/12)+" Y = " + (Math.round(y)/12) );
 
+             if(bt_moveable){
 
+                  stp.setLayoutX(  ( (int)Math.round(x)/12)*12 );
+                  stp.setLayoutY(  ( (int)Math.round(y)/12)*12 );
+                  bt_count++;
 
+                if(bt_count==3||bt_count>3){
+                    bt_moveable=false;
+                    bt_count=0;
+                }
+
+                            }
+
+////////////////////////////////////////////////////////////////////////////////
+              if(ax_moveable){
+
+                  stp2.setLayoutX(  ( (int)Math.round(x)/12)*12 );
+                  stp2.setLayoutY(  ( (int)Math.round(y)/12)*12 );
+                  ax_count++;
+
+                  if(ax_count==3 || ax_count>3){
+                      ax_moveable=false;
+                      ax_count=0;
+                  }
+
+              }
              }
-
-             //stp.removeEventHandler(MouseEvent.MOUSE_CLICKED,this::handle);
-
 
       });
 
@@ -77,22 +102,42 @@ public class Controller implements  Initializable  {
       stp.setOnMouseClicked(new EventHandler<MouseEvent>() {
           @Override
           public void handle(MouseEvent event) {
-
-
+              bt_count++;
+              if(bt_count==1)
+              bt_moveable=true;
             }
-
-
       });
 
     }
 
 
+    public void ap(){
+
+        stp2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ax_count++;
+                if(ax_count==1)
+                    ax_moveable=true;
+
+
+            }
+
+
+        });
+
+    }
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
+    wr.loadMap();
 
     jp();
     np();
+    ap();
 
   }
 
