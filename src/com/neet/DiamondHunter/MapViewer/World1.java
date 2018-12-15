@@ -101,9 +101,7 @@ public class World1 {
             FileReader mpfl = new FileReader("Resources/Maps/testmap.map");
 
             InputStream in = getClass().getResourceAsStream(s);
-            BufferedReader br = new BufferedReader(
-                   mpfl
-            );
+            BufferedReader br = new BufferedReader(mpfl);
 
             numCols = Integer.parseInt(br.readLine());
             numRows = Integer.parseInt(br.readLine());

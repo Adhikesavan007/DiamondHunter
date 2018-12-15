@@ -20,15 +20,18 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.TileMap.TileMap;
+import com.neet.DiamondHunter.sample.Controller;
 
 public class PlayState extends GameState {
 	
 	// player
+	public static int a=37 ,b=26,c=12,d=4;
+
 	private Player player;
 	
 	// tilemap
 	private TileMap tileMap;
-	
+
 	// diamonds
 	private ArrayList<Diamond> diamonds;
 	
@@ -176,12 +179,12 @@ public class PlayState extends GameState {
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
+		item.setTilePosition(a, b);
 		items.add(item);
 		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
+		item.setTilePosition(c, d);
 		items.add(item);
 		
 	}
