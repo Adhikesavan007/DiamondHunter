@@ -46,6 +46,7 @@ public class World1 {
     public int numRowsToDraw;
     public int numColsToDraw;
 
+
     //constructor
     public World1(){
 
@@ -97,7 +98,7 @@ public class World1 {
     public void loadMap( ) {
 
         try {
-            InputStreamReader mpfl = new InputStreamReader(getClass().getResourceAsStream("/Maps/testmap.map"));
+            FileReader mpfl = new FileReader("Resources/Maps/testmap.map");
 
            // InputStream in = getClass().getResourceAsStream(s);
             BufferedReader br = new BufferedReader(mpfl);
@@ -127,7 +128,6 @@ public class World1 {
         }
         catch(Exception e) {
             e.printStackTrace();
-            System.out.println("in");
         }
 
     }
@@ -144,8 +144,8 @@ public class World1 {
                 if(map[row][col] == 0) continue;
 
                 int rc = map[row][col];
-                 int r = rc / numTilesAcross;
-                 int c = rc % numTilesAcross;
+                int r = rc / numTilesAcross;
+                int c = rc % numTilesAcross;
 
                 g.drawImage(
                         tiles[r][c].getImage().getScaledInstance(24,24,Image.SCALE_SMOOTH),
