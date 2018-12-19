@@ -46,7 +46,6 @@ public class World1 {
     public int numRowsToDraw;
     public int numColsToDraw;
 
-
     //constructor
     public World1(){
 
@@ -144,8 +143,8 @@ public class World1 {
                 if(map[row][col] == 0) continue;
 
                 int rc = map[row][col];
-                int r = rc / numTilesAcross;
-                int c = rc % numTilesAcross;
+                 int r = rc / numTilesAcross;
+                 int c = rc % numTilesAcross;
 
                 g.drawImage(
                         tiles[r][c].getImage().getScaledInstance(24,24,Image.SCALE_SMOOTH),
